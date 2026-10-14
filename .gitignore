@@ -1,0 +1,4 @@
+.DS_Store
+.playwright-cli/
+output/
+node_modules/
