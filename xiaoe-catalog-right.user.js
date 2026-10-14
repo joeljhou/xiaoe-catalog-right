@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         小鹅通课程目录搬到视频右侧
 // @namespace    https://github.com/joeljhou/xiaoe-catalog-right
-// @version      1.11.0
+// @version      1.11.1
 // @description  小鹅通视频右侧内嵌彩色课程目录，支持全屏搜索、左右调宽、右下角可拖动小猫，并记忆清晰度与倍速
 // @author       joeljhou
 // @license      MIT
@@ -163,8 +163,11 @@
       #xe-cat-body .catalog_box{padding:0 12px 16px !important;box-sizing:border-box !important;}
       #xe-cat-body #catalog_box,#xe-cat-body #infinite_list_location{height:auto !important;max-height:none !important;overflow:visible !important;}
       #xe-cat-body .camp_pro_content_catalog .catalog_box{padding:0 !important;}
-      /* 浅色章节标题；底色只用于标题，课时与当前学习状态沿用原站语义。 */
-      #xe-cat-body .el-collapse-item__header{min-height:46px !important;height:auto !important;width:auto !important;box-sizing:border-box !important;padding:10px 12px !important;margin:8px 12px !important;border:0 !important;border-radius:10px !important;background:var(--xe-chapter-color,#f8ead0) !important;color:#333 !important;line-height:21px !important;}
+      /* 统一章节间距，避免原站容器 padding 与标题 margin 叠加。 */
+      #xe-cat-body .chapter_item_box{padding:6px 0 !important;}
+      #xe-cat-body .catalog_list_collapse{border:0 !important;}
+      #xe-cat-body .el-collapse-item{margin:0 !important;}
+      #xe-cat-body .el-collapse-item__header{min-height:46px !important;height:auto !important;width:auto !important;box-sizing:border-box !important;padding:10px 12px !important;margin:0 12px !important;border:0 !important;border-radius:10px !important;background:var(--xe-chapter-color,#f8ead0) !important;color:#333 !important;line-height:21px !important;}
       #xe-cat-body .el-collapse-item__header:hover{filter:brightness(.98);}
       #xe-cat-body .el-collapse-item__header:focus-visible{outline:2px solid #4f6fa5 !important;outline-offset:2px;}
       #xe-cat-body .chapter_title_wrapper{display:flex !important;align-items:center !important;gap:8px;flex:1;min-width:0;}
@@ -174,12 +177,14 @@
       #xe-cat-body .el-collapse-item__arrow{flex-shrink:0;color:#626a73 !important;margin-left:8px !important;}
       #xe-cat-body .catalog_title,#xe-cat-body .title_slot,#xe-cat-body .chapter_title{font-size:14px !important;line-height:21px !important;}
       /* 展开课时使用章节同色的淡底与细分隔线，保留当前学习的蓝色高亮。 */
-      #xe-cat-body .el-collapse-item__wrap{border-bottom:0 !important;background:transparent !important;}
-      #xe-cat-body .el-collapse-item__content{padding-bottom:12px !important;}
-      #xe-cat-body .el-collapse-item .section_item_box{position:relative;margin:0 12px !important;width:calc(100% - 24px) !important;border:0 !important;border-radius:8px !important;}
+      #xe-cat-body .el-collapse-item__wrap{margin-top:8px !important;border-bottom:0 !important;background:transparent !important;}
+      #xe-cat-body .el-collapse-item__content{padding-bottom:0 !important;}
+      #xe-cat-body .infinite_list_chapter_children{margin:0 !important;}
+      #xe-cat-body .el-collapse-item .section_item_box,#xe-cat-body .catalog_list.sectionBox .section_item_box{position:relative;margin:0 12px !important;width:calc(100% - 24px) !important;border:0 !important;border-radius:8px !important;}
       #xe-cat-body .el-collapse-item .section_item_box:not(.last_study_bg){background:#faf8f4 !important;background:color-mix(in srgb,var(--xe-chapter-color,#f8ead0) 22%,white) !important;}
       #xe-cat-body .el-collapse-item .section_item_box::after{content:"";position:absolute;left:12px;right:12px;bottom:0;height:1px;background:color-mix(in srgb,var(--xe-chapter-color,#f8ead0) 65%,#cbd5e1);pointer-events:none;}
-      #xe-cat-body .catalog_list.sectionBox .section_item_box{border-bottom:1px solid #e5e7eb !important;}
+      #xe-cat-body .catalog_list.sectionBox{border:0 !important;}
+      #xe-cat-body .catalog_list.sectionBox .section_item_box::after{content:"";position:absolute;left:12px;right:12px;bottom:0;height:1px;background:#e5e7eb;pointer-events:none;}
       /* 课时条目：真实类名取自 CourseContentCatalog 源码（注意 setions/secitons 是原站拼写） */
       #xe-cat-body .section_item_box{padding:10px 12px !important;height:auto !important;min-height:70px !important;box-sizing:border-box !important;flex-shrink:0 !important;overflow:visible !important;}
       #xe-cat-body .cata_box_right{flex:1 1 auto !important;min-width:0 !important;}
