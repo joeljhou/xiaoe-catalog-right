@@ -59,7 +59,7 @@
 
 ## 发布与验证
 
-源代码位于 `main` 分支的 `xiaoe-catalog-right.user.js`。发布时更新 `@version`，再提交、推送；GreasyFork 通过 GitHub Raw 链接自动同步。中文安装说明来自 [docs/greasyfork-description.md](docs/greasyfork-description.md)。
+源代码位于 `main` 分支的 `xiaoe-catalog-right.user.js`。发布时更新 `@version`，再提交、推送；GitHub 的 `push` Webhook 通知 GreasyFork 从 GitHub Raw 链接同步代码和说明，无需再手动粘贴。代码更新需递增 `@version`；只改文档不会产生新的脚本版本。中文安装说明来自 [docs/greasyfork-description.md](docs/greasyfork-description.md)。
 
 ```sh
 node --check xiaoe-catalog-right.user.js
