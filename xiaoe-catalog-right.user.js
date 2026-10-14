@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         小鹅通课程目录搬到视频右侧
 // @namespace    https://github.com/joeljhou/xiaoe-catalog-right
-// @version      1.10.5
-// @description  小鹅通网页内嵌右侧目录、全屏搜索、左右调宽、可拖动小猫和桌面悬浮，一键嵌回网页，并记忆清晰度与倍速
+// @version      1.11.0
+// @description  小鹅通视频右侧内嵌彩色课程目录，支持全屏搜索、左右调宽、右下角可拖动小猫，并记忆清晰度与倍速
 // @author       joeljhou
 // @license      MIT
 // @icon         data:image/png;base64,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
@@ -27,8 +27,8 @@
   };
   let dock = null, dockBody = null, dockFixed = false, syncTimer = 0, followTimer = 0;
   let followedHref = '';
-  // 运行状态：是否已接管、用户是否拖到自定义位置、折叠状态（仅当前页面有效，默认展开）、拖拽过程、目录原位
-  let active = false, userPos = false, dockCollapsed = false, dragState = null, started = false, guardLogged = false;
+  // 运行状态：是否已接管、折叠状态（仅当前页面有效，默认展开）、拖拽过程、目录原位
+  let active = false, dockCollapsed = false, dragState = null, started = false, guardLogged = false;
   let catOriginParent = null, catOriginNext = null;
   // 全屏时接管视频元素尺寸的属性列表（逐属性记住原内联值，退出全屏时原样恢复）
   const FS_PROPS = ['position', 'left', 'top', 'width', 'height', 'transform', 'object-fit', 'max-width', 'max-height'];
@@ -39,9 +39,7 @@
   let webFullRoot = null, webFullAdded = false;
   // 面板自定义宽度（0 = 自动宽度）与拖拽状态，仅当前页面有效
   let customDockW = 0, resizeState = null;
-  let normalRect = null, fullRect = null, petPos = null, petClickUntil = 0;
-  let desktopWindow = null, desktopOpening = false, desktopLauncher = null;
-  let desktopSize = { w: CONF.dockWidth, h: 560 };
+  let fullRect = null, petPos = null, petClickUntil = 0;
   let embeddedHost = null, embeddedOld = null, embeddedVideoHeight = 550;
   let embeddedFallback = null;
   let fullscreenEntry = null;
@@ -53,8 +51,7 @@
   // 目录节点候选（按优先级）：课程页 course_content_catalog、训练营/会员/专栏/大专栏、商品页 goods-catalog、最后兜底
   const CAT_SEL = ['.course_content_catalog', '.camp_pro_content_catalog', '.camp_catalog', '.member_catalog',
     '.column_catalog', '.big_column_catalog', '.content_switch_tab .catalog_box', '.goods-catalog .catalog_box', '.catalog_box'];
-  const catNode = () => CAT_SEL.map((sel) => pick(sel)).find(Boolean)
-    || CAT_SEL.map((sel) => desktopWindow?.document.querySelector(sel)).find(Boolean) || null;
+  const catNode = () => CAT_SEL.map((sel) => pick(sel)).find(Boolean) || null;
   // 页面类型与关键选择器命中情况，便于在不同课程页类型上排查
   const pageType = () => (pick('#tab-catalog') ? 'goods/camp_pro' : (location.pathname.indexOf('/camp_pro/') > -1 ? 'camp_pro' : 'video'));
   const diag = () => ' | 命中：player=' + !!pick(SEL.player) + ' video=' + !!pick(SEL.video)
@@ -73,9 +70,9 @@
   const panelW = () => Math.min(customDockW || CONF.dockWidth, maxPanelWidth());
   const maxPanelWidth = () => Math.max(1, Math.min(CONF.maxWidth, window.innerWidth - 16,
     fullSession ? Math.max(120, Math.min(window.innerWidth * .7, window.innerWidth - 260)) : Infinity));
-  // 全屏右栏以视口为高度上限；网页内与桌面悬浮继续使用配置上限。
-  const maxPanelHeight = () => fullSession && !desktopWindow ? window.innerHeight
-    : !desktopWindow && (embeddedHost || embeddedFallback) ? CONF.maxHeight
+  // 全屏右栏以视口为高度上限；网页内继续使用配置上限。
+  const maxPanelHeight = () => fullSession ? window.innerHeight
+    : (embeddedHost || embeddedFallback) ? CONF.maxHeight
     : Math.max(1, Math.min(CONF.maxHeight, window.innerHeight - 16));
   const clamp = (n, low, high) => Math.max(low, Math.min(n, high));
   const dockW = () => (collapsed() ? CONF.foldWidth : panelW());
@@ -87,7 +84,7 @@
   };
   function setDockRect(r) {
     leaveEmbedded();
-    if (!desktopWindow && dock.parentElement !== (document.fullscreenElement || document.body)) (document.fullscreenElement || document.body).appendChild(dock);
+    if (dock.parentElement !== (document.fullscreenElement || document.body)) (document.fullscreenElement || document.body).appendChild(dock);
     dock.style.cssText = `position:fixed;z-index:9999;display:flex;left:${Math.round(r.left)}px;top:${Math.round(r.top)}px;width:${Math.round(r.w)}px;height:${Math.round(r.h)}px;`;
     dockFixed = true;
     dock.querySelectorAll('.xe-cat-resizer').forEach((el) => {
@@ -109,7 +106,9 @@
       if (!key) return;
       if (!chapterColors.has(key)) chapterColors.set(key, chapterPalette[chapterColors.size % chapterPalette.length]);
       const color = chapterColors.get(key);
-      if (header.style.getPropertyValue('--xe-chapter-color') !== color) header.style.setProperty('--xe-chapter-color', color);
+      [header, header.closest('.el-collapse-item')].filter(Boolean).forEach((target) => {
+        if (target.style.getPropertyValue('--xe-chapter-color') !== color) target.style.setProperty('--xe-chapter-color', color);
+      });
     });
   }
 
@@ -130,18 +129,10 @@
       #xe-cat-inline-slot{width:min(100%,640px);margin:16px 0 16px auto;}
       #xe-cat-inline-slot>#xe-cat-dock{position:relative!important;inset:auto!important;width:100%!important;z-index:auto!important;box-shadow:none;border:1px solid #e5e7eb;}
       #xe-cat-head{flex:0 0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 12px;}
-      #xe-cat-head{height:40px;border-bottom:1px solid #eee;font-size:14px;color:#333;cursor:move;user-select:none;}
+      #xe-cat-head{height:40px;border-bottom:1px solid #eee;font-size:14px;color:#333;cursor:default;user-select:none;}
       .xe-cat-tools{display:flex;align-items:center;gap:8px;}
-      #xe-cat-pin{border:0;padding:0;background:none;color:#3b82f6;font:12px/24px sans-serif;cursor:pointer;white-space:nowrap;}
-      #xe-cat-pin[hidden]{display:none!important;}
       #xe-cat-toggle{cursor:pointer;color:#3b82f6;font-size:12px;user-select:none;}
       #xe-cat-toggle:hover{opacity:.7;}
-      #xe-cat-desktop{border:0;padding:0;background:none;color:#64748b;font:12px/24px sans-serif;cursor:pointer;white-space:nowrap;}
-      #xe-cat-desktop:hover{color:#3b82f6;}
-      #xe-cat-desktop:disabled{opacity:.5;cursor:wait;}
-      #xe-cat-desktop-notice{font:12px/18px sans-serif;color:#b45309;padding:6px 12px;background:#fffbeb;}
-      #xe-cat-desktop-notice:empty{display:none;}
-      #xe-cat-desktop-launcher{position:fixed;right:16px;top:80px;z-index:10001;border:1px solid #dbe3ee;border-radius:8px;background:#fff;color:#334155;padding:8px 12px;cursor:pointer;font:13px sans-serif;box-shadow:0 2px 12px #0002;}
       #xe-cat-body{flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;}
       #xe-cat-body{padding-bottom:24px;scroll-padding-block:24px;box-sizing:border-box;overscroll-behavior:contain;}
       #xe-cat-body>*{width:100% !important;max-width:none !important;box-sizing:border-box !important;}
@@ -182,6 +173,13 @@
       #xe-cat-body .el-collapse-item__header .chapter-status{flex-shrink:0;font-size:11px !important;line-height:18px !important;color:#626a73 !important;background:transparent !important;border:1px solid #9299a580 !important;border-radius:3px;padding:0 4px;white-space:nowrap;}
       #xe-cat-body .el-collapse-item__arrow{flex-shrink:0;color:#626a73 !important;margin-left:8px !important;}
       #xe-cat-body .catalog_title,#xe-cat-body .title_slot,#xe-cat-body .chapter_title{font-size:14px !important;line-height:21px !important;}
+      /* 展开课时使用章节同色的淡底与细分隔线，保留当前学习的蓝色高亮。 */
+      #xe-cat-body .el-collapse-item__wrap{border-bottom:0 !important;background:transparent !important;}
+      #xe-cat-body .el-collapse-item__content{padding-bottom:12px !important;}
+      #xe-cat-body .el-collapse-item .section_item_box{position:relative;margin:0 12px !important;width:calc(100% - 24px) !important;border:0 !important;border-radius:8px !important;}
+      #xe-cat-body .el-collapse-item .section_item_box:not(.last_study_bg){background:#faf8f4 !important;background:color-mix(in srgb,var(--xe-chapter-color,#f8ead0) 22%,white) !important;}
+      #xe-cat-body .el-collapse-item .section_item_box::after{content:"";position:absolute;left:12px;right:12px;bottom:0;height:1px;background:color-mix(in srgb,var(--xe-chapter-color,#f8ead0) 65%,#cbd5e1);pointer-events:none;}
+      #xe-cat-body .catalog_list.sectionBox .section_item_box{border-bottom:1px solid #e5e7eb !important;}
       /* 课时条目：真实类名取自 CourseContentCatalog 源码（注意 setions/secitons 是原站拼写） */
       #xe-cat-body .section_item_box{padding:10px 12px !important;height:auto !important;min-height:70px !important;box-sizing:border-box !important;flex-shrink:0 !important;overflow:visible !important;}
       #xe-cat-body .cata_box_right{flex:1 1 auto !important;min-width:0 !important;}
@@ -253,8 +251,8 @@
     dock = document.createElement('div');
     dock.id = 'xe-cat-dock';
     dock.innerHTML = '<div id="xe-cat-head"><span class="xe-cat-title">课程目录</span>'
-      + '<span class="xe-cat-tools"><button id="xe-cat-pin" title="恢复网页内嵌目录，保留调整后的尺寸" hidden>嵌回网页</button><button id="xe-cat-desktop" title="移到浏览器外的桌面悬浮窗口">桌面悬浮 ↗</button><span id="xe-cat-toggle" role="button" tabindex="0">收起</span></span></div><div id="xe-cat-desktop-notice" role="status"></div><div id="xe-cat-body"></div>'
-      + '<button id="xe-cat-pet" aria-label="展开课程目录" title="点击展开 · 拖拽移动 · 右键桌面悬浮">'
+      + '<span class="xe-cat-tools"><span id="xe-cat-toggle" role="button" tabindex="0">收起</span></span></div><div id="xe-cat-body"></div>'
+      + '<button id="xe-cat-pet" aria-label="展开课程目录" title="点击展开 · 拖拽移动">'
       + '<svg viewBox="0 0 72 80" aria-hidden="true"><ellipse cx="36" cy="72" rx="23" ry="3" fill="#39332d" opacity=".12"/>'
       + '<g class="xe-pet-body" stroke="#51463b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'
       + '<path d="M54 63c13 1 12-16 5-14" fill="none" stroke="#dfb77d" stroke-width="7"/>'
@@ -281,18 +279,12 @@
     document.body.appendChild(dock);
     dockBody = dock.querySelector('#xe-cat-body');
     dock.querySelector('#xe-cat-toggle').addEventListener('click', toggleDock);
-    dock.querySelector('#xe-cat-pin').addEventListener('click', pinDock);
-    dock.querySelector('#xe-cat-desktop').addEventListener('click', () => {
-      if (desktopWindow) pinDock(); else openDesktop();
-    });
-    bindHeaderDrag(dock.querySelector('#xe-cat-head'));
     dock.querySelector('#xe-cat-toggle').addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); e.stopPropagation(); toggleDock(); }
     });
     const pet = dock.querySelector('#xe-cat-pet');
-    bindHeaderDrag(pet, true);
+    bindPetDrag(pet);
     pet.addEventListener('click', () => { if (Date.now() >= petClickUntil) toggleDock(); });
-    pet.addEventListener('contextmenu', (e) => { e.preventDefault(); if (desktopWindow) pinDock(); else openDesktop(); });
     pet.addEventListener('keydown', (e) => { if (e.key !== 'Escape') e.stopPropagation(); });
     bindCatalogSearch();
     log('已创建右侧目录面板');
@@ -334,16 +326,14 @@
     }));
   }
 
-  // 拖动标题栏或宠物；宠物的拖动和单击通过距离阈值区分。
-  function bindHeaderDrag(head, pet = false) {
-    head.addEventListener('pointerdown', (e) => {
-      if (desktopWindow || e.button !== 0 || e.target.closest('.xe-cat-tools') || (!pet && fullSession)) return;
+  // 只有收起后的小猫可以拖动，目录始终留在网页布局中。
+  function bindPetDrag(pet) {
+    pet.addEventListener('pointerdown', (e) => {
+      if (e.button !== 0) return;
       const r = dock.getBoundingClientRect();
-      dragState = { x: e.clientX, y: e.clientY, left: r.left, top: r.top, w: r.width, h: r.height, moved: false, pet };
-      head.setPointerCapture(e.pointerId);
-      if (!pet) e.preventDefault();
+      dragState = { x: e.clientX, y: e.clientY, left: r.left, top: r.top, w: r.width, h: r.height, moved: false };
+      pet.setPointerCapture(e.pointerId);
     });
-    if (!pet) head.addEventListener('dblclick', (e) => { if (!e.target.closest('.xe-cat-tools')) pinDock(); });
   }
 
   function resizeOrigin() {
@@ -360,7 +350,6 @@
     const next = { left: edge === 'w' ? r.left + r.w - w : r.left, top: r.top, w, h: r.h };
     customDockW = w;
     if (fullSession) fullRect = next;
-    else if (!embeddedHost && !embeddedFallback) { normalRect = next; userPos = true; }
     layout();
   }
 
@@ -378,7 +367,7 @@
       e.stopPropagation();
     });
     resizer.addEventListener('dblclick', () => {
-      customDockW = 0; fullRect = null; normalRect = null; userPos = false; layout();
+      customDockW = 0; fullRect = null; layout();
     });
   }
 
@@ -392,9 +381,7 @@
       if (!dragState || Math.hypot(e.clientX - dragState.x, e.clientY - dragState.y) < 4 && !dragState.moved) return;
       dragState.moved = true;
       const r = rectInViewport({ ...dragState, left: dragState.left + e.clientX - dragState.x, top: dragState.top + e.clientY - dragState.y });
-      if (dragState.pet) { petPos = { left: r.left, top: r.top }; petClickUntil = Date.now() + 400; }
-      else { normalRect = r; userPos = true; }
-      updatePinControl();
+      petPos = { left: r.left, top: r.top }; petClickUntil = Date.now() + 400;
       setDockRect(r);
       if (fullSession && collapsed()) updateFullscreenEntry(pick(SEL.player) || pick(SEL.videoRoot));
     });
@@ -405,15 +392,10 @@
   }
 
   function toggleDock() {
-    const r = dock.getBoundingClientRect();
-    if (desktopWindow && !dockCollapsed) desktopSize = { w: desktopWindow.innerWidth, h: desktopWindow.innerHeight };
-    if (!dockCollapsed) {
-      if (!petPos) petPos = { left: r.right - CONF.foldWidth, top: r.top + 8 };
-      if (!fullSession && userPos) normalRect = { left: r.left, top: r.top, w: r.width, h: r.height };
-    }
     dockCollapsed = !dockCollapsed;
+    dragState = null;
+    resizeState = null;
     applyCollapsed();
-    if (desktopWindow) resizeDesktop(dockCollapsed ? { w: 160, h: 160 } : desktopSize);
     layout();
     sync(true);
   }
@@ -422,169 +404,6 @@
     if (!dock) return;
     dock.classList.toggle('xe-collapsed', dockCollapsed);
     dock.querySelector('#xe-cat-toggle').textContent = dockCollapsed ? '目录' : '收起';
-    const desktopButton = dock.querySelector('#xe-cat-desktop');
-    desktopButton.textContent = desktopWindow ? '嵌回网页 ↙' : '桌面悬浮 ↗';
-    desktopButton.title = desktopWindow ? '关闭桌面悬浮并恢复网页内嵌目录' : '移到浏览器外的桌面悬浮窗口';
-    dock.querySelector('#xe-cat-pet').title = desktopWindow ? '点击展开 · 拖系统标题栏移动 · 右键嵌回网页' : '点击展开 · 拖拽移动 · 右键桌面悬浮';
-    updatePinControl();
-  }
-
-  function updatePinControl() {
-    if (dock) dock.querySelector('#xe-cat-pin').hidden = !!desktopWindow || !(userPos || fullRect);
-  }
-
-  function pinDock() {
-    dragState = null; resizeState = null;
-    userPos = false; normalRect = null; fullRect = null; petPos = null;
-    dockCollapsed = false;
-    if (desktopWindow) {
-      const win = desktopWindow;
-      restoreDesktop(); win.close();
-    }
-    applyCollapsed(); layout(); sync(true);
-  }
-
-  // 文档画中画是浏览器提供的真实置顶窗口；DOM 搬运保留 Vue 组件和登录状态。
-  let desktopStyles = new Map();
-  let desktopQueryRestore = null;
-  function bridgeDesktopCatalogQueries() {
-    // 原站的当前课时定位使用主 document 查询；仅为目录节点提供跨窗口兜底。
-    const ids = new Set(['section_item_location', 'chapter_item_location', 'infinite_list_location', 'catalog_box']);
-    const selectors = new Set(['.section_item_box', '.ss-switch_label']);
-    const old = ['getElementById', 'querySelector', 'querySelectorAll'].map((name) => [name,
-      Object.getOwnPropertyDescriptor(document, name), document[name]]);
-    old.forEach(([name, , original]) => {
-      document[name] = function (query) {
-        const result = original.call(this, query);
-        if (this !== document || !desktopWindow || !(name === 'getElementById' ? ids : selectors).has(query)) return result;
-        if (name === 'querySelectorAll') return result.length ? result : desktopWindow.document.querySelectorAll(query);
-        return result || desktopWindow.document[name](query);
-      };
-    });
-    desktopQueryRestore = () => {
-      old.forEach(([name, descriptor]) => {
-        if (descriptor) Object.defineProperty(document, name, descriptor); else delete document[name];
-      });
-      desktopQueryRestore = null;
-    };
-  }
-  function refreshDesktopStyles() {
-    if (!desktopWindow) return;
-    const sources = [...document.querySelectorAll('style,link[rel="stylesheet"]')]
-      .filter((el) => el.id !== 'xe-cat-pop-style');
-    for (const [source, copy] of desktopStyles) {
-      if (!sources.includes(source)) { copy.remove(); desktopStyles.delete(source); }
-    }
-    sources.forEach((source) => {
-      let copy = desktopStyles.get(source);
-      if (!copy) {
-        copy = source.cloneNode(true);
-        if (source.tagName === 'LINK') copy.href = source.href;
-        desktopWindow.document.head.appendChild(copy);
-        desktopStyles.set(source, copy);
-      } else if (source.tagName === 'STYLE' && copy.textContent !== source.textContent) copy.textContent = source.textContent;
-    });
-  }
-
-  function resizeDesktop(size) {
-    if (!desktopWindow || desktopWindow.closed) return;
-    // Chrome 会施加自己的最小尺寸；不与系统边界反复争抢。
-    const frameW = Math.max(0, desktopWindow.outerWidth - desktopWindow.innerWidth);
-    const frameH = Math.max(0, desktopWindow.outerHeight - desktopWindow.innerHeight);
-    try { desktopWindow.resizeTo(Math.min(size.w, CONF.maxWidth) + frameW, Math.min(size.h, CONF.maxHeight) + frameH); }
-    catch (error) { log('窗口尺寸由 Chrome 管理：' + error.message); }
-  }
-
-  function layoutDesktop() {
-    if (!desktopWindow || !dock) return;
-    const w = Math.min(desktopWindow.innerWidth, CONF.maxWidth), h = Math.min(desktopWindow.innerHeight, CONF.maxHeight);
-    dock.classList.remove('xe-full-dock');
-    dock.classList.add('xe-desktop-dock');
-    dock.style.cssText = `position:fixed;inset:0;z-index:9999;display:flex;width:${w}px;height:${h}px;`;
-    if (!collapsed()) desktopSize = { w: Math.min(w, CONF.maxWidth), h: Math.min(h, CONF.maxHeight) };
-  }
-
-  function restoreDesktop() {
-    const oldWindow = desktopWindow;
-    if (!oldWindow) return;
-    oldWindow.document.querySelectorAll('.xe-sort-popover-layer').forEach((el) => document.body.appendChild(el));
-    desktopWindow = null; desktopStyles.clear();
-    desktopQueryRestore?.();
-    if (dock) {
-      dock.classList.remove('xe-desktop-dock');
-      document.body.appendChild(dock);
-      applyCollapsed();
-    }
-    desktopLauncher?.remove(); desktopLauncher = null;
-    if (active) { layout(); liftSortPopover(); sync(true); }
-  }
-
-  async function openDesktop() {
-    if (desktopWindow || desktopOpening || !dock) return;
-    const notice = dock.querySelector('#xe-cat-desktop-notice');
-    if (!window.documentPictureInPicture?.requestWindow) {
-      notice.textContent = '此 Chrome 暂不支持桌面悬浮，请更新 Chrome 后重试。';
-      return;
-    }
-    desktopOpening = true;
-    const button = dock.querySelector('#xe-cat-desktop');
-    button.disabled = true; notice.textContent = '';
-    const r = dock.getBoundingClientRect();
-    if (!collapsed()) desktopSize = { w: Math.min(r.width, CONF.maxWidth), h: Math.min(r.height, CONF.maxHeight) };
-    try {
-      const size = collapsed() ? { w: 160, h: 160 } : desktopSize;
-      // 必须直接在用户点击/右键的调用栈中请求，不能自动弹出桌面窗口。
-      const win = await window.documentPictureInPicture.requestWindow({ width: size.w, height: size.h,
-        disallowReturnToOpener: true, preferInitialWindowPlacement: true });
-      if (!active || !dock) { win.close(); return; }
-      desktopWindow = win;
-      leaveEmbedded();
-      dragState = null; resizeState = null;
-      const doc = win.document;
-      doc.documentElement.lang = 'zh-CN'; doc.title = '课程目录';
-      const base = doc.createElement('base'); base.href = location.href; doc.head.appendChild(base);
-      refreshDesktopStyles();
-      const style = doc.createElement('style');
-      style.textContent = `html,body{margin:0!important;padding:0!important;min-width:0!important;min-height:0!important;width:100%!important;height:100%!important;overflow:hidden!important;background:#f5f2eb!important;font:14px sans-serif;color:#333;}
-        #xe-cat-dock.xe-desktop-dock{border-radius:0;box-shadow:none;}
-        #xe-cat-dock.xe-desktop-dock .xe-cat-resizer{display:none;}
-        #xe-cat-dock.xe-desktop-dock #xe-cat-head{cursor:default;}
-        #xe-cat-dock.xe-desktop-dock #xe-cat-head{height:30px;padding:0 10px;background:#f8fafc;border-bottom:1px solid #e5e7eb;}
-        #xe-cat-dock.xe-desktop-dock #xe-cat-pet{inset:50% auto auto 50%;width:96px;height:106px;transform:translate(-50%,-50%);cursor:pointer;}
-        #xe-cat-dock.xe-desktop-dock #xe-cat-body{width:100%!important;}
-        #xe-cat-dock.xe-desktop-dock #xe-cat-toggle{white-space:nowrap;}
-        #xe-cat-dock.xe-desktop-dock #xe-cat-head .xe-cat-title{font-size:12px;color:#64748b;}`;
-      doc.head.appendChild(style);
-      doc.body.appendChild(dock);
-      bridgeDesktopCatalogQueries();
-      applyCollapsed();
-      desktopLauncher = document.createElement('button'); desktopLauncher.id = 'xe-cat-desktop-launcher';
-      desktopLauncher.textContent = '目录已悬浮 · 嵌回网页';
-      desktopLauncher.addEventListener('click', pinDock);
-      document.body.appendChild(desktopLauncher);
-      win.addEventListener('pagehide', () => { if (desktopWindow === win) restoreDesktop(); }, { once: true });
-      win.addEventListener('resize', () => {
-        if (desktopWindow !== win) return;
-        layoutDesktop(); liftSortPopover();
-        // 系统窗口由 Chrome 管理；无用户手势时 resizeTo 会被忽略。
-        // 内容面板始终限制为 640×800，避免 resize 事件反复争抢窗口尺寸。
-      });
-      doc.addEventListener('click', (event) => {
-        if (event.target.closest('.sort_box')) setTimeout(liftSortPopover, 0);
-      }, true);
-      // 主页面 document 的捕获监听不覆盖独立窗口，要在这里标记目录切课。
-      doc.addEventListener('click', (event) => {
-        if (desktopWindow && event.target.closest('.section_item_box')) episodeTransitionUntil = Date.now() + 8000;
-      }, true);
-      new MutationObserver(() => {
-        if (desktopWindow === win) { sync(false); liftSortPopover(); }
-      }).observe(doc.body, { childList: true, subtree: true });
-      layout(); liftSortPopover();
-    } catch (error) {
-      if (desktopWindow) { const win = desktopWindow; restoreDesktop(); win.close(); }
-      notice.textContent = '桌面悬浮未打开：' + error.message;
-      log(notice.textContent);
-    } finally { desktopOpening = false; button.disabled = false; }
   }
 
   // 6. 把目录节点搬进右侧面板（同一时刻只保留一个目录节点，并记录原位以便搬回）
@@ -605,7 +424,6 @@
     if (!active) return;
     active = false;
     leaveEmbedded();
-    if (desktopWindow) { const win = desktopWindow; restoreDesktop(); win.close(); }
     episodeTransitionUntil = 0;
     leaveFullLayout();
     const cat = catNode();
@@ -614,7 +432,7 @@
       log('已把目录放回原位置');
     }
     if (dock) dock.remove();
-    dock = null; dockBody = null; dockFixed = false; userPos = false;
+    dock = null; dockBody = null; dockFixed = false;
     catOriginParent = null; catOriginNext = null;
     log('已退出接管（当前不是课时学习界面，页面保持原样）');
   }
@@ -696,8 +514,8 @@
     const ref = dock.querySelector('.sort_box');
     if (!ref) return;
     // 站点也会直接把弹层挂在 body；每次全屏/退出全屏都要重新搬到可见的宿主。
-    const host = desktopWindow?.document.body || document.fullscreenElement || document.body;
-    const menus = [...document.querySelectorAll('.selector-wrapper'), ...(desktopWindow?.document.querySelectorAll('.selector-wrapper') || [])];
+    const host = document.fullscreenElement || document.body;
+    const menus = [...document.querySelectorAll('.selector-wrapper')];
     menus.forEach((menu) => {
       const pop = menu.closest('.ss-popover__box') || menu;
       if (pop.parentElement !== host) host.appendChild(pop);
@@ -818,21 +636,21 @@
       fullscreenEntry.innerHTML = '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M7 5h10M7 10h10M7 15h10"/><path d="M3 5h1M3 10h1M3 15h1"/></svg><span></span>';
       fullscreenEntry.setAttribute('aria-controls', 'xe-cat-dock');
       fullscreenEntry.addEventListener('click', () => {
-        if (desktopWindow || collapsed()) pinDock(); else toggleDock();
+        toggleDock();
       });
       ['keydown', 'keyup', 'keypress'].forEach(type => fullscreenEntry.addEventListener(type, event => {
         if (event.key !== 'Escape') event.stopPropagation();
       }));
     }
     if (fullscreenEntry.parentElement !== host) host.appendChild(fullscreenEntry);
-    const shown = !desktopWindow && !collapsed();
-    const label = desktopWindow ? '课程目录 · 返回全屏' : shown ? '收起课程目录' : '课程目录';
+    const shown = !collapsed();
+    const label = shown ? '收起课程目录' : '课程目录';
     const caption = fullscreenEntry.querySelector('span');
     if (caption.textContent !== label) caption.textContent = label;
     fullscreenEntry.setAttribute('aria-expanded', String(shown));
-    fullscreenEntry.title = desktopWindow ? '把桌面目录移回当前全屏' : shown ? '收起目录，视频恢复全宽' : '展开目录，可搜索和切换课时';
+    fullscreenEntry.title = shown ? '收起目录，视频恢复全宽' : '展开目录，可搜索和切换课时';
     let right = shown && player ? Math.max(16, window.innerWidth - player.getBoundingClientRect().right + 16) : 16;
-    if (!desktopWindow && collapsed()) {
+    if (collapsed()) {
       const pet = dock.getBoundingClientRect(), width = fullscreenEntry.offsetWidth;
       if (pet.top < 16 + fullscreenEntry.offsetHeight && pet.bottom > 16
         && pet.left < window.innerWidth - right && pet.right > window.innerWidth - right - width) {
@@ -901,24 +719,22 @@
     fullRect = null;
     if (dock) {
       dock.classList.remove('xe-full-dock');
-      if (!desktopWindow && dock.parentElement !== document.body) document.body.appendChild(dock);
+      if (dock.parentElement !== document.body) document.body.appendChild(dock);
     }
     liftSortPopover();
   }
 
   // 9. 悬浮状态的无播放器页面定位（默认展开状态仍使用文档流）。
   function dockToViewport() {
-    if (desktopWindow) { layoutDesktop(); return; }
     if (collapsed()) { layoutPet(); return; }
-    if (userPos && normalRect) { normalRect = rectInViewport(normalRect); setDockRect(normalRect); return; }
     setDockRect(rectInViewport({ left: window.innerWidth - dockW() - 16, top: CONF.viewportTop, w: dockW(), h: dockH() }));
   }
 
   function layoutPet() {
     leaveEmbedded();
     const r = rectInViewport({ left: petPos?.left ?? window.innerWidth - CONF.foldWidth - 16,
-      top: petPos?.top ?? CONF.viewportTop, w: CONF.foldWidth, h: CONF.foldHeight });
-    petPos = { left: r.left, top: r.top };
+      top: petPos?.top ?? window.innerHeight - CONF.foldHeight - (fullSession ? 64 : 24), w: CONF.foldWidth, h: CONF.foldHeight });
+    if (petPos) petPos = { left: r.left, top: r.top };
     setDockRect(r);
   }
 
@@ -928,7 +744,7 @@
     dockBody.innerHTML = '<div class="xe-cat-hint">' + text + '</div>';
   }
 
-  // 10. 默认嵌进网页网格；拖动、全屏、桌面窗口时才脱离文档流。
+  // 10. 默认嵌进网页网格；全屏或收起时才脱离文档流。
   function leaveEmbedded() {
     if (embeddedFallback) {
       if (dock?.parentElement === embeddedFallback) document.body.appendChild(dock);
@@ -987,14 +803,12 @@
 
   function layout() {
     if (!dock) return;
-    updatePinControl();
-    if (desktopWindow) { layoutDesktop(); refreshDesktopStyles(); }
     const player = pick(SEL.player) || pick(SEL.videoRoot);
     // 切集短暂没有播放器时，保留全屏右栏，等待新播放器挂载。
     if (!player) {
       if (fullSession && (document.fullscreenElement || isEpisodeTransition())) return;
       if (fullSession || fullPlayer) leaveFullLayout();
-      if (desktopWindow || collapsed() || userPos) dockToViewport(); else embedWithoutPlayer();
+      if (collapsed()) layoutPet(); else embedWithoutPlayer();
       return;
     }
     const videoRoot = player.querySelector(SEL.videoRoot) || player;
@@ -1015,17 +829,17 @@
       fullHref = location.href;
       fullVideo = pick(SEL.video);
       const host = document.fullscreenElement || document.body;
-      if (!desktopWindow && dock.parentElement !== host) host.appendChild(dock);
-      if (!desktopWindow) dock.classList.add('xe-full-dock');
+      if (dock.parentElement !== host) host.appendChild(dock);
+      dock.classList.add('xe-full-dock');
       restoreVideoWidth(videoRoot);
       const width = panelW();
       // 全屏始终贴顶铺满，左右调宽不会改变高度。
       const target = fullRect || { left: window.innerWidth - width, top: 0, w: width, h: window.innerHeight };
       const r = rectInViewport({ ...target, top: 0, h: window.innerHeight }, false);
       if (fullRect) fullRect = r;
-      fitPlayerFullscreen(player, desktopWindow || collapsed() ? window.innerWidth : r.left);
+      fitPlayerFullscreen(player, collapsed() ? window.innerWidth : r.left);
       fitVideoFullscreen();
-      if (desktopWindow) layoutDesktop(); else if (collapsed()) layoutPet(); else setDockRect(r);
+      if (collapsed()) layoutPet(); else setDockRect(r);
       updateFullscreenEntry(player);
       liftSortPopover();
       dockFixed = true;
@@ -1033,12 +847,7 @@
     }
     if (fullSession || fullPlayer) leaveFullLayout();
     removeFullscreenEntry();
-    if (desktopWindow) { leaveEmbedded(); restoreVideoWidth(videoRoot); layoutDesktop(); return; }
     if (collapsed()) { restoreVideoWidth(videoRoot); layoutPet(); return; }
-    if (userPos && normalRect) {
-      restoreVideoWidth(videoRoot);
-      normalRect = rectInViewport(normalRect); setDockRect(normalRect); return;
-    }
     embedDock(player, videoRoot);
   }
 
