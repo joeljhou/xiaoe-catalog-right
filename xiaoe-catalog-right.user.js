@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         小鹅通课程目录搬到视频右侧
 // @namespace    https://github.com/joeljhou/xiaoe-catalog-right
-// @version      1.10.4
+// @version      1.10.5
 // @description  小鹅通网页内嵌右侧目录、全屏搜索、左右调宽、可拖动小猫和桌面悬浮，一键嵌回网页，并记忆清晰度与倍速
 // @author       joeljhou
 // @license      MIT
@@ -97,6 +97,22 @@
     });
   }
 
+  // 章节颜色沿用首次出现的顺序；搜索、排序和 Vue 重建后，同一章节保留底色。
+  const chapterPalette = ['#f8ead0', '#ccf7eb', '#d0defa', '#e8cef5', '#f7cedf', '#cdf2f8',
+    '#f8dacf', '#cff7ce', '#d6cff8', '#f7cef1', '#f1facb', '#cdf7f2'];
+  const chapterColors = new Map();
+  function colorChapterHeaders() {
+    if (!dockBody) return;
+    dockBody.querySelectorAll('.el-collapse-item__header').forEach((header) => {
+      const title = header.querySelector('.chapter_title,.catalog_title,.title_slot');
+      const key = (title || header).textContent.replace(/[（(]\s*\d+\s*小节\s*[）)]/g, '').replace(/\s+/g, ' ').trim();
+      if (!key) return;
+      if (!chapterColors.has(key)) chapterColors.set(key, chapterPalette[chapterColors.size % chapterPalette.length]);
+      const color = chapterColors.get(key);
+      if (header.style.getPropertyValue('--xe-chapter-color') !== color) header.style.setProperty('--xe-chapter-color', color);
+    });
+  }
+
   // 3. 注入面板样式
   function injectStyle() {
     if (document.getElementById('xe-cat-style')) return;
@@ -156,7 +172,15 @@
       #xe-cat-body .catalog_box{padding:0 12px 16px !important;box-sizing:border-box !important;}
       #xe-cat-body #catalog_box,#xe-cat-body #infinite_list_location{height:auto !important;max-height:none !important;overflow:visible !important;}
       #xe-cat-body .camp_pro_content_catalog .catalog_box{padding:0 !important;}
-      #xe-cat-body .el-collapse-item__header{height:46px !important;padding-left:12px !important;padding-right:12px !important;}
+      /* 浅色章节标题；底色只用于标题，课时与当前学习状态沿用原站语义。 */
+      #xe-cat-body .el-collapse-item__header{min-height:46px !important;height:auto !important;width:auto !important;box-sizing:border-box !important;padding:10px 12px !important;margin:8px 12px !important;border:0 !important;border-radius:10px !important;background:var(--xe-chapter-color,#f8ead0) !important;color:#333 !important;line-height:21px !important;}
+      #xe-cat-body .el-collapse-item__header:hover{filter:brightness(.98);}
+      #xe-cat-body .el-collapse-item__header:focus-visible{outline:2px solid #4f6fa5 !important;outline-offset:2px;}
+      #xe-cat-body .chapter_title_wrapper{display:flex !important;align-items:center !important;gap:8px;flex:1;min-width:0;}
+      #xe-cat-body .el-collapse-item__header .chapter_title,#xe-cat-body .el-collapse-item__header .catalog_title,#xe-cat-body .el-collapse-item__header .title_slot{min-width:0;font-weight:600 !important;color:#333 !important;background:transparent !important;white-space:normal !important;overflow-wrap:anywhere;}
+      #xe-cat-body .el-collapse-item__header .chapter_selection_num{font-weight:400 !important;color:#737b85 !important;background:transparent !important;white-space:nowrap;}
+      #xe-cat-body .el-collapse-item__header .chapter-status{flex-shrink:0;font-size:11px !important;line-height:18px !important;color:#626a73 !important;background:transparent !important;border:1px solid #9299a580 !important;border-radius:3px;padding:0 4px;white-space:nowrap;}
+      #xe-cat-body .el-collapse-item__arrow{flex-shrink:0;color:#626a73 !important;margin-left:8px !important;}
       #xe-cat-body .catalog_title,#xe-cat-body .title_slot,#xe-cat-body .chapter_title{font-size:14px !important;line-height:21px !important;}
       /* 课时条目：真实类名取自 CourseContentCatalog 源码（注意 setions/secitons 是原站拼写） */
       #xe-cat-body .section_item_box{padding:10px 12px !important;height:auto !important;min-height:70px !important;box-sizing:border-box !important;flex-shrink:0 !important;overflow:visible !important;}
@@ -1023,6 +1047,7 @@
     if (!dock?.isConnected) ensureDock();
     applyCollapsed();
     relocateCatalog();
+    colorChapterHeaders();
     layout();
     scheduleFollowCurrent(false);
   }
@@ -1055,7 +1080,7 @@
       }                   // 已不在学习界面：立刻把目录放回原位
       const cat = catNode();
       if (!cat) { if (openCatalogTab()) return; layout(); showHint('未找到课程目录' + diag()); return; }
-      if (force || !dockBody || cat.parentElement !== dockBody) remount(); else layout();
+      if (force || !dockBody || cat.parentElement !== dockBody) remount(); else { colorChapterHeaders(); layout(); }
     }, 120);
   }
 
