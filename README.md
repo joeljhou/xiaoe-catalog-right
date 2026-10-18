@@ -6,6 +6,12 @@
 
 **1.13.2** · [安装脚本](https://greasyfork.org/zh-CN/scripts/600209) · [MIT 许可证](LICENSE) · [更新记录](CHANGELOG.md)
 
+## 30 秒看效果
+
+中文配音演示：目录左右切换、同侧收起展开、网页全屏搜索。
+
+[观看或下载中文配音视频](docs/videos/xiaoe-catalog-promo-x-zh-voice.mp4) · 30 秒 · 1080p · AI 合成配音
+
 ## 一眼看懂
 
 ![原站目录在视频下方，安装后目录内嵌在视频右侧](docs/images/before-after.png)
