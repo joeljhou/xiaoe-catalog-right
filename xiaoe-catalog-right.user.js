@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         小鹅通课程目录搬到视频右侧
 // @namespace    https://github.com/joeljhou/xiaoe-catalog-right
-// @version      1.13.1
+// @version      1.13.2
 // @description  小鹅通视频旁内嵌彩色课程目录，可选左侧或右侧并记忆，支持全屏搜索、左右调宽、同侧收起标签，并记忆清晰度与倍速
 // @homepageURL  https://github.com/joeljhou/xiaoe-catalog-right
 // @supportURL   https://github.com/joeljhou/xiaoe-catalog-right/issues
@@ -16,7 +16,7 @@
 (function () {
   'use strict';
 
-  // 1. 可调参数：默认宽度、尺寸上下限和贴顶偏移
+  // 1. 可调参数：默认宽度、尺寸上下限和无锚点时的贴顶偏移
   const CONF = { dockWidth: 360, gap: 16, minWidth: 260, maxWidth: 640, maxHeight: 800,
     viewportTop: 72 };
 
@@ -77,8 +77,6 @@
     : (embeddedHost || embeddedFallback) ? CONF.maxHeight
     : Math.max(1, Math.min(CONF.maxHeight, window.innerHeight - 16));
   const clamp = (n, low, high) => Math.max(low, Math.min(n, high));
-  const dockW = () => panelW();
-  const dockH = () => Math.min(560, maxPanelHeight());
   const rectInViewport = (r) => {
     const w = Math.min(r.w, maxPanelWidth(), window.innerWidth);
     const h = Math.min(r.h, maxPanelHeight(), window.innerHeight);
@@ -152,7 +150,6 @@
       #xe-cat-body{flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;}
       #xe-cat-body{padding-bottom:24px;scroll-padding-block:24px;box-sizing:border-box;overscroll-behavior:contain;}
       #xe-cat-body>*{width:100% !important;max-width:none !important;box-sizing:border-box !important;}
-      #xe-cat-body .xe-cat-hint{color:#999;font-size:12px;line-height:18px;padding:12px;word-break:break-all;}
       #xe-cat-body .course_content_catalog,
       #xe-cat-body .camp_pro_content_catalog,
       #xe-cat-body .camp_catalog,
@@ -435,13 +432,13 @@
     leaveFullLayout();
     const cat = catNode();
     if (cat && dockBody && cat.parentElement === dockBody && catOriginParent && document.contains(catOriginParent)) {
-      catOriginParent.insertBefore(cat, catOriginNext && document.contains(catOriginNext) ? catOriginNext : null);
+      catOriginParent.insertBefore(cat, catOriginNext?.parentElement === catOriginParent ? catOriginNext : null);
       log('已把目录放回原位置');
     }
     if (dock) dock.remove();
     dock = null; dockBody = null; dockFixed = false; collapsedScroll = [];
     catOriginParent = null; catOriginNext = null;
-    log('已退出接管（当前不是课时学习界面，页面保持原样）');
+    log('已退出目录接管，恢复原页面布局');
   }
 
   // 7. 自动展开并定位到当前课时。每个 URL 只执行一次，不打扰用户后续手动滚动。
@@ -729,25 +726,12 @@
     liftSortPopover();
   }
 
-  // 9. 悬浮状态的无播放器页面定位（默认展开状态仍使用文档流）。
-  function dockToViewport() {
-    if (collapsed()) { hideCollapsedDock(); updateCatalogEntry(pick(SEL.player) || pick(SEL.videoRoot)); return; }
-    setDockRect(rectInViewport({ left: catalogSide === 'left' ? 16 : window.innerWidth - dockW() - 16,
-      top: CONF.viewportTop, w: dockW(), h: dockH() }));
-  }
-
   function hideCollapsedDock() {
     leaveEmbedded();
     const host = document.fullscreenElement || document.body;
     if (dock.parentElement !== host) host.appendChild(dock);
     dock.style.display = 'none';
     dockFixed = true;
-  }
-
-  // 9.1 找不到目录时在面板里给出提示（面板本身保持可见，便于确认脚本已注入并反馈日志）
-  function showHint(text) {
-    if (!dockBody || dockBody.querySelector('.xe-cat-hint')) return;
-    dockBody.innerHTML = '<div class="xe-cat-hint">' + text + '</div>';
   }
 
   // 10. 默认嵌进网页网格；全屏或收起时才脱离文档流。
@@ -862,6 +846,8 @@
 
   // 10. 重新把面板挂到 DOM 里（SPA 重渲染后可能被移除）
   function remount() {
+    if (!catNode()) return;
+    active = true;
     if (!dock?.isConnected) ensureDock();
     applyCollapsed();
     relocateCatalog();
@@ -887,7 +873,7 @@
     return false;
   }
 
-  // 12. 防抖同步：目录被 Vue 重渲染回原位时重新搬运；始终找不到目录时露出面板并提示
+  // 12. 防抖同步：有真实目录才接管；缺失时恢复布局，继续等待原站异步渲染。
   function sync(force) {
     clearTimeout(syncTimer);
     syncTimer = setTimeout(() => {
@@ -897,8 +883,8 @@
         deactivate(); return;
       }                   // 已不在学习界面：立刻把目录放回原位
       const cat = catNode();
-      if (!cat) { if (openCatalogTab()) return; layout(); showHint('未找到课程目录' + diag()); return; }
-      if (force || !dockBody || cat.parentElement !== dockBody) remount(); else { colorChapterHeaders(); layout(); }
+      if (!cat) { deactivate(); openCatalogTab(); return; }
+      if (force || !active || !dock?.isConnected || !dockBody || cat.parentElement !== dockBody) remount(); else { colorChapterHeaders(); layout(); }
     }, 120);
   }
 
@@ -996,7 +982,7 @@
   }
 
   // 14. 主入口：只在课时学习界面接管目录；其余页面完全不动作，保持原样
-  function boot(retry = 0) {
+  function boot() {
     if (!isLessonPage()) {
       if (active && Date.now() < episodeTransitionUntil) return;
       if (!guardLogged) { guardLogged = true; log('当前不是课时学习界面，脚本不接管（页面=' + pageType() + diag() + '）'); }
@@ -1004,22 +990,11 @@
       return;
     }
     guardLogged = false;
-    if (!active || !dock || !dock.isConnected) {
-      active = true;
-      ensureDock();
-      applyCollapsed();
-      log('已进入课时学习界面，开始接管目录（页面=' + pageType() + '）');
-    }
-    if (!catNode() && !openCatalogTab() && retry < 20) { setTimeout(() => boot(retry + 1), 600); return; }
-    if (!catNode()) {                                        // 始终找不到目录：按所选侧定位并提示，继续靠 sync 自愈
-      dockToViewport();
-      showHint('未找到课程目录节点，请把 F12 控制台 [目录右移] 日志反馈' + diag());
-      log('未找到课程目录节点，已按所选侧定位兜底' + diag());
-    } else {
-      remount();
-      log('初始化完成（页面=' + pageType() + diag() + '）');
-    }
     start();
+    // 独立课时可能没有目录；不以 URL 参数推断，也不预先挤占播放器。
+    if (!catNode()) { deactivate(); openCatalogTab(); return; }
+    remount();
+    log('初始化完成（页面=' + pageType() + diag() + '）');
   }
 
   // 15. 启动自愈循环：DOM 变化/滚动缩放/轮询都会重新同步（只在学习界面生效）
@@ -1064,7 +1039,7 @@
     }, 2000);
   }
 
-  // 16. 启动：非学习界面时不接管，但仍轮询，等 SPA 跳到课时页后自动接管
+  // 16. 进入学习页后先观察并恢复播放偏好，真实目录出现后再接管。
   boot();
   setInterval(() => { if (!active) boot(); }, 1500);
 })();
