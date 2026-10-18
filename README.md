@@ -10,6 +10,8 @@
 
 中文配音演示：目录左右切换、同侧收起展开、网页全屏搜索。
 
+https://github.com/user-attachments/assets/7f9eda5f-6562-4dd2-8f0f-64782e129e95
+
 [观看或下载中文配音视频](docs/videos/xiaoe-catalog-promo-x-zh-voice.mp4) · 30 秒 · 1080p · AI 合成配音
 
 ## 一眼看懂
