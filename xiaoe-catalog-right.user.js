@@ -1,13 +1,14 @@
 // ==UserScript==
 // @name         小鹅通课程目录搬到视频右侧
 // @namespace    https://github.com/joeljhou/xiaoe-catalog-right
-// @version      1.11.1
-// @description  小鹅通视频右侧内嵌彩色课程目录，支持全屏搜索、左右调宽、右下角可拖动小猫，并记忆清晰度与倍速
+// @version      1.13.1
+// @description  小鹅通视频旁内嵌彩色课程目录，可选左侧或右侧并记忆，支持全屏搜索、左右调宽、同侧收起标签，并记忆清晰度与倍速
+// @homepageURL  https://github.com/joeljhou/xiaoe-catalog-right
+// @supportURL   https://github.com/joeljhou/xiaoe-catalog-right/issues
 // @author       joeljhou
 // @license      MIT
 // @icon         data:image/png;base64,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
 // @match        https://*.pc.xiaoe-tech.com/p/t_pc/course_pc_detail/*
-// @include      /^https?:\/\/[^/]+\/p\/t_pc\/course_pc_detail\//
 // @run-at       document-idle
 // @grant        none
 // ==/UserScript==
@@ -15,9 +16,9 @@
 (function () {
   'use strict';
 
-  // 1. 可调参数：默认宽度、尺寸上下限、宠物尺寸和贴顶偏移
+  // 1. 可调参数：默认宽度、尺寸上下限和贴顶偏移
   const CONF = { dockWidth: 360, gap: 16, minWidth: 260, maxWidth: 640, maxHeight: 800,
-    foldWidth: 72, foldHeight: 80, headHeight: 40, viewportTop: 72 };
+    viewportTop: 72 };
 
   // 2. 关键选择器（取自小鹅通 pc_course_detail 前端源码，稳定）
   const SEL = {
@@ -27,8 +28,8 @@
   };
   let dock = null, dockBody = null, dockFixed = false, syncTimer = 0, followTimer = 0;
   let followedHref = '';
-  // 运行状态：是否已接管、折叠状态（仅当前页面有效，默认展开）、拖拽过程、目录原位
-  let active = false, dockCollapsed = false, dragState = null, started = false, guardLogged = false;
+  // 运行状态：是否已接管、折叠状态（仅当前页面有效，默认展开）、目录原位
+  let active = false, dockCollapsed = false, started = false, guardLogged = false;
   let catOriginParent = null, catOriginNext = null;
   // 全屏时接管视频元素尺寸的属性列表（逐属性记住原内联值，退出全屏时原样恢复）
   const FS_PROPS = ['position', 'left', 'top', 'width', 'height', 'transform', 'object-fit', 'max-width', 'max-height'];
@@ -39,10 +40,9 @@
   let webFullRoot = null, webFullAdded = false;
   // 面板自定义宽度（0 = 自动宽度）与拖拽状态，仅当前页面有效
   let customDockW = 0, resizeState = null;
-  let fullRect = null, petPos = null, petClickUntil = 0;
   let embeddedHost = null, embeddedOld = null, embeddedVideoHeight = 550;
   let embeddedFallback = null;
-  let fullscreenEntry = null;
+  let catalogEntry = null, collapsedScroll = [];
   const WEB_FULL_SEL = '.xgplayer-is-css-fullscreen,.xgplayer-is-cssfullscreen,.xgplayer-is-fullscreen';
   const searchValues = new WeakMap();
   let searchTimer = 0;
@@ -66,20 +66,22 @@
     get: (k) => { try { return localStorage.getItem(k); } catch (e) { return null; } },
     set: (k, v) => { try { localStorage.setItem(k, v); } catch (e) { /* 忽略 */ } }
   };
+  const SIDE_KEY = 'xe_pref_catalog_side';
+  let catalogSide = store.get(SIDE_KEY) === 'left' ? 'left' : 'right';
   const collapsed = () => dockCollapsed;                                        // 折叠状态只记在当前页面内，刷新后默认展开
   const panelW = () => Math.min(customDockW || CONF.dockWidth, maxPanelWidth());
   const maxPanelWidth = () => Math.max(1, Math.min(CONF.maxWidth, window.innerWidth - 16,
     fullSession ? Math.max(120, Math.min(window.innerWidth * .7, window.innerWidth - 260)) : Infinity));
-  // 全屏右栏以视口为高度上限；网页内继续使用配置上限。
+  // 全屏侧栏以视口为高度上限；网页内继续使用配置上限。
   const maxPanelHeight = () => fullSession ? window.innerHeight
     : (embeddedHost || embeddedFallback) ? CONF.maxHeight
     : Math.max(1, Math.min(CONF.maxHeight, window.innerHeight - 16));
   const clamp = (n, low, high) => Math.max(low, Math.min(n, high));
-  const dockW = () => (collapsed() ? CONF.foldWidth : panelW());
-  const dockH = () => (collapsed() ? CONF.foldHeight : Math.min(560, maxPanelHeight()));
-  const rectInViewport = (r, folded = collapsed()) => {
-    const w = Math.min(r.w, folded ? CONF.foldWidth : maxPanelWidth(), window.innerWidth);
-    const h = Math.min(r.h, folded ? CONF.foldHeight : maxPanelHeight(), window.innerHeight);
+  const dockW = () => panelW();
+  const dockH = () => Math.min(560, maxPanelHeight());
+  const rectInViewport = (r) => {
+    const w = Math.min(r.w, maxPanelWidth(), window.innerWidth);
+    const h = Math.min(r.h, maxPanelHeight(), window.innerHeight);
     return { left: clamp(r.left, 0, window.innerWidth - w), top: clamp(r.top, 0, window.innerHeight - h), w, h };
   };
   function setDockRect(r) {
@@ -124,15 +126,29 @@
       .xe-cat-embedded-player .video-player{width:100%!important;min-width:0!important;max-width:none!important;margin:0!important;}
       .xe-cat-embedded-player .xgplayer:not(.xgplayer-is-css-fullscreen):not(.xgplayer-is-cssfullscreen):not(.xgplayer-is-fullscreen){width:100%!important;}
       .xe-cat-embedded-player>#xe-cat-dock{grid-column:2;grid-row:1 / span var(--xe-catalog-rows,1);position:relative!important;inset:auto!important;width:100%!important;min-width:0;min-height:0;contain:size;max-height:800px;z-index:auto!important;border:1px solid #e5e7eb;border-radius:6px;box-shadow:none;}
+      .xe-cat-embedded-player.xe-cat-left{grid-template-columns:var(--xe-catalog-width) minmax(0,1fr)!important;}
+      .xe-cat-embedded-player.xe-cat-left>*:not(#xe-cat-dock){grid-column:2;}
+      .xe-cat-embedded-player.xe-cat-left>#xe-cat-dock{grid-column:1;}
       .xe-cat-embedded-player.xe-cat-stacked{grid-template-columns:minmax(0,1fr)!important;}
+      .xe-cat-embedded-player.xe-cat-stacked>*:not(#xe-cat-dock){grid-column:1;}
       .xe-cat-embedded-player.xe-cat-stacked>#xe-cat-dock{grid-column:1;grid-row:auto;height:var(--xe-catalog-stack-height,550px)!important;}
       #xe-cat-inline-slot{width:min(100%,640px);margin:16px 0 16px auto;}
       #xe-cat-inline-slot>#xe-cat-dock{position:relative!important;inset:auto!important;width:100%!important;z-index:auto!important;box-shadow:none;border:1px solid #e5e7eb;}
       #xe-cat-head{flex:0 0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 12px;}
       #xe-cat-head{height:40px;border-bottom:1px solid #eee;font-size:14px;color:#333;cursor:default;user-select:none;}
       .xe-cat-tools{display:flex;align-items:center;gap:8px;}
-      #xe-cat-toggle{cursor:pointer;color:#3b82f6;font-size:12px;user-select:none;}
-      #xe-cat-toggle:hover{opacity:.7;}
+      #xe-cat-side{display:inline-flex;flex:none;gap:2px;padding:2px;border:1px solid #e5e7eb;border-radius:6px;background:#f3f4f6;}
+      #xe-cat-side button{appearance:none;box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;width:28px;height:26px;margin:0;padding:0;border:0;border-radius:4px;background:transparent;color:#4b5563;cursor:pointer;}
+      #xe-cat-side button:hover{background:#e5e7eb;}
+      #xe-cat-side button[aria-pressed=true]{background:#fff;color:#2563eb;box-shadow:0 1px 3px #0002;}
+      #xe-cat-side button:focus-visible{outline:2px solid #2563eb;outline-offset:1px;}
+      #xe-cat-head button svg{display:block;width:18px;height:18px;pointer-events:none;}
+      #xe-cat-toggle{appearance:none;display:inline-flex;align-items:center;justify-content:center;flex:none;box-sizing:border-box;width:28px;height:28px;margin:0;padding:0;border:0;border-radius:4px;background:transparent;cursor:pointer;color:#4b5563;}
+      #xe-cat-toggle:hover{background:#f3f4f6;color:#2563eb;}
+      #xe-cat-toggle:focus-visible{outline:2px solid #2563eb;outline-offset:1px;}
+      #xe-cat-dock[data-side=left] #xe-cat-head{position:relative;padding-left:48px;}
+      #xe-cat-dock[data-side=left] #xe-cat-toggle{position:absolute;left:8px;top:6px;}
+      #xe-cat-dock[data-side=left] #xe-cat-toggle svg{transform:scaleX(-1);}
       #xe-cat-body{flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;}
       #xe-cat-body{padding-bottom:24px;scroll-padding-block:24px;box-sizing:border-box;overscroll-behavior:contain;}
       #xe-cat-body>*{width:100% !important;max-width:none !important;box-sizing:border-box !important;}
@@ -200,13 +216,15 @@
       .xe-sort-popover-layer{z-index:10050 !important;pointer-events:auto !important;}
       body .selector-wrapper{gap:12px !important;font-size:14px !important;}
       body .selector-wrapper .select-item{min-height:24px;align-items:center;cursor:pointer;}
-      #xe-cat-dock.xe-collapsed .xe-cat-title,#xe-cat-dock.xe-collapsed #xe-cat-body{display:none;}
-      #xe-cat-dock.xe-collapsed #xe-cat-head{justify-content:center;padding:0;}
+      #xe-cat-dock.xe-collapsed{display:none!important;}
       #xe-cat-full-backdrop{position:fixed;inset:0;background:#000;z-index:9997;}
-      #xe-cat-full-entry{position:fixed!important;top:16px!important;z-index:10001!important;display:inline-flex!important;align-items:center;gap:7px;min-height:36px;max-width:calc(100vw - 32px);padding:0 12px!important;border:1px solid #ffffff38!important;border-radius:8px!important;background:#17202ee8!important;color:#fff!important;font:13px/34px sans-serif!important;box-shadow:0 2px 8px #0003;cursor:pointer;white-space:nowrap;}
-      #xe-cat-full-entry:hover{background:#2563eb!important;border-color:#60a5fa!important;}
-      #xe-cat-full-entry:focus-visible{outline:2px solid #93c5fd;outline-offset:3px;}
-      #xe-cat-full-entry svg{width:16px;height:16px;flex:none;}
+      #xe-cat-entry{box-sizing:border-box!important;z-index:10001!important;display:inline-flex!important;flex-direction:column;align-items:center;justify-content:center;gap:6px;width:36px;min-height:112px;margin:0!important;padding:10px 6px!important;border:1px solid #ffffff50!important;border-radius:0 8px 8px 0;background:#2563eb!important;color:#fff!important;font:13px/18px sans-serif!important;box-shadow:0 2px 8px #0002;cursor:pointer;transition:background .15s ease;}
+      #xe-cat-entry[data-side=right]{border-radius:8px 0 0 8px;}
+      #xe-cat-entry:hover{background:#1d4ed8!important;}
+      #xe-cat-entry:focus-visible{outline:2px solid #93c5fd;outline-offset:2px;}
+      #xe-cat-entry svg{width:18px;height:18px;flex:none;}
+      #xe-cat-entry span{writing-mode:vertical-rl;letter-spacing:2px;white-space:nowrap;}
+      @media(prefers-reduced-motion:reduce){#xe-cat-entry{transition:none;}}
       .xe-cat-full-player{box-sizing:border-box !important;margin:0 !important;padding:0 !important;min-width:0 !important;min-height:0 !important;right:auto !important;bottom:auto !important;z-index:9998 !important;background:#000 !important;}
       /* 真实课程页在播放器外还有固定 688px 高的包装层。一起铺满，避免视频只占全屏上半部。 */
       .xe-cat-full-player .video-content-header{position:relative !important;width:100% !important;height:100% !important;max-width:none !important;padding:0 !important;margin:0 !important;background:#000 !important;}
@@ -224,21 +242,6 @@
       .xe-cat-resizer:hover,.xe-cat-resizer:focus-visible{background:rgba(59,130,246,.3);outline:none;}
       .xe-cat-resizer[data-edge=w]{left:0;top:12px;bottom:12px;width:7px;cursor:ew-resize;}
       .xe-cat-resizer[data-edge=e]{right:0;top:12px;bottom:12px;width:7px;cursor:ew-resize;}
-      #xe-cat-pet{display:none;}
-      #xe-cat-dock.xe-collapsed{background:transparent;border-radius:0;box-shadow:none;overflow:visible;}
-      #xe-cat-dock.xe-collapsed #xe-cat-head,#xe-cat-dock.xe-collapsed .xe-cat-resizer{display:none;}
-      #xe-cat-dock.xe-collapsed #xe-cat-pet{display:block;}
-      #xe-cat-pet{position:absolute;inset:0;width:100%;height:100%;padding:0;border:0;background:transparent;cursor:grab;touch-action:none;user-select:none;}
-      #xe-cat-pet:active{cursor:grabbing;}
-      #xe-cat-pet:focus-visible{outline:2px solid #3b82f6;outline-offset:2px;border-radius:20px;}
-      #xe-cat-pet svg{display:block;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 3px 3px rgba(42,39,34,.18));pointer-events:none;}
-      #xe-cat-pet .xe-pet-body{transform-origin:36px 67px;animation:xe-pet-breathe 3.4s ease-in-out infinite;}
-      #xe-cat-pet .xe-pet-eyes{transform-origin:36px 36px;animation:xe-pet-blink 6s infinite;}
-      #xe-cat-pet:hover .xe-pet-body{animation:none;transform:translateY(-3px) rotate(-4deg);}
-      #xe-cat-pet .xe-pet-body{transition:transform .18s ease;}
-      @keyframes xe-pet-breathe{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
-      @keyframes xe-pet-blink{0%,43%,47%,100%{transform:scaleY(1)}45%{transform:scaleY(.08)}}
-      @media(prefers-reduced-motion:reduce){#xe-cat-pet .xe-pet-body,#xe-cat-pet .xe-pet-eyes{animation:none;transition:none;}}
     `;
     const style = document.createElement('style');
     style.id = 'xe-cat-style';
@@ -246,7 +249,7 @@
     document.head.appendChild(style);
   }
 
-  // 4. 创建右侧面板（幂等）
+  // 4. 创建目录面板（幂等）
   function ensureDock() {
     injectStyle();
     if (dock && !dock.isConnected && (embeddedHost || embeddedFallback)) {
@@ -256,20 +259,14 @@
     dock = document.createElement('div');
     dock.id = 'xe-cat-dock';
     dock.innerHTML = '<div id="xe-cat-head"><span class="xe-cat-title">课程目录</span>'
-      + '<span class="xe-cat-tools"><span id="xe-cat-toggle" role="button" tabindex="0">收起</span></span></div><div id="xe-cat-body"></div>'
-      + '<button id="xe-cat-pet" aria-label="展开课程目录" title="点击展开 · 拖拽移动">'
-      + '<svg viewBox="0 0 72 80" aria-hidden="true"><ellipse cx="36" cy="72" rx="23" ry="3" fill="#39332d" opacity=".12"/>'
-      + '<g class="xe-pet-body" stroke="#51463b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'
-      + '<path d="M54 63c13 1 12-16 5-14" fill="none" stroke="#dfb77d" stroke-width="7"/>'
-      + '<path d="M20 46c-3 9-3 18 1 22h30c5-5 4-17 0-22" fill="#f3d4a0"/>'
-      + '<path d="M15 30 15 11q1-4 5-1l11 10h10l11-10q4-3 5 1v19q5 22-21 22T15 30Z" fill="#ffe7bf"/>'
-      + '<path d="m19 16 8 7-8 4m34-11-8 7 8 4" fill="#eebca5" stroke="none"/>'
-      + '<path d="m32 22 1 6m7-6-1 6" stroke="#d8aa70"/><g class="xe-pet-eyes" fill="#51463b" stroke="none"><ellipse cx="27" cy="36" rx="2.3" ry="3.1"/><ellipse cx="45" cy="36" rx="2.3" ry="3.1"/></g>'
-      + '<ellipse cx="21" cy="42" rx="4" ry="2" fill="#efb5a1" stroke="none"/><ellipse cx="51" cy="42" rx="4" ry="2" fill="#efb5a1" stroke="none"/>'
-      + '<path d="m34 41 2 2 2-2m-2 2v2m-4 0q2 3 4 0 2 3 4 0" fill="none"/>'
-      + '<path d="M22 53q7-2 14 2 7-4 14-2v16q-7-2-14 1-7-3-14-1Z" fill="#96b4a0"/><path d="M36 55v15" fill="none"/>'
-      + '<path d="m27 58 5 1m-5 4 5 1m8-5 5-1m-5 6 5-1" stroke="#edf3e8" stroke-width="1.5"/>'
-      + '<ellipse cx="22" cy="59" rx="4" ry="5" fill="#ffe7bf"/><ellipse cx="50" cy="59" rx="4" ry="5" fill="#ffe7bf"/></g></svg></button>';
+      + '<span class="xe-cat-tools"><span id="xe-cat-side" role="group" aria-label="课程目录位置">'
+      + '<button type="button" data-side="left" aria-label="目录显示在视频左侧" title="目录显示在视频左侧">'
+      + '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2.5" y="3.5" width="15" height="13" rx="2"/><path d="M7.5 4v12"/><path d="M4 5h2v10H4z" fill="currentColor" stroke="none"/></svg></button>'
+      + '<button type="button" data-side="right" aria-label="目录显示在视频右侧" title="目录显示在视频右侧">'
+      + '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2.5" y="3.5" width="15" height="13" rx="2"/><path d="M12.5 4v12"/><path d="M14 5h2v10h-2z" fill="currentColor" stroke="none"/></svg></button>'
+      + '</span><button id="xe-cat-toggle" type="button" aria-label="收起课程目录" title="收起课程目录">'
+      + '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 4v12M3 10h9M8 6l4 4-4 4"/></svg>'
+      + '</button></span></div><div id="xe-cat-body"></div>';
     const edges = { w: '左', e: '右' };
     Object.entries(edges).forEach(([edge, name]) => {
       const el = document.createElement('div');
@@ -283,17 +280,37 @@
     });
     document.body.appendChild(dock);
     dockBody = dock.querySelector('#xe-cat-body');
-    dock.querySelector('#xe-cat-toggle').addEventListener('click', toggleDock);
-    dock.querySelector('#xe-cat-toggle').addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); e.stopPropagation(); toggleDock(); }
+    dock.querySelectorAll('#xe-cat-side button').forEach(button => {
+      button.addEventListener('click', () => setCatalogSide(button.dataset.side));
+      ['keydown', 'keyup', 'keypress'].forEach(type => button.addEventListener(type, event => {
+        if (event.key !== 'Escape') event.stopPropagation();
+      }));
     });
-    const pet = dock.querySelector('#xe-cat-pet');
-    bindPetDrag(pet);
-    pet.addEventListener('click', () => { if (Date.now() >= petClickUntil) toggleDock(); });
-    pet.addEventListener('keydown', (e) => { if (e.key !== 'Escape') e.stopPropagation(); });
+    updateSideControls();
+    dock.querySelector('#xe-cat-toggle').addEventListener('click', toggleDock);
+    ['keydown', 'keyup', 'keypress'].forEach(type => dock.querySelector('#xe-cat-toggle').addEventListener(type, event => {
+      if (event.key !== 'Escape') event.stopPropagation();
+    }));
     bindCatalogSearch();
-    log('已创建右侧目录面板');
+    log('已创建目录面板');
     return dock;
+  }
+
+  function updateSideControls() {
+    if (dock) dock.dataset.side = catalogSide;
+    dock?.querySelectorAll('#xe-cat-side button').forEach(button => {
+      button.setAttribute('aria-pressed', String(button.dataset.side === catalogSide));
+    });
+  }
+
+  function setCatalogSide(side) {
+    if (!['left', 'right'].includes(side) || side === catalogSide) return;
+    catalogSide = side;
+    store.set(SIDE_KEY, side);
+    resizeState = null;
+    updateSideControls();
+    layout();
+    liftSortPopover();
   }
 
   // 搜索沿用原站接口：补齐 change 触发，不截断成仅搜索已加载的目录。
@@ -331,16 +348,6 @@
     }));
   }
 
-  // 只有收起后的小猫可以拖动，目录始终留在网页布局中。
-  function bindPetDrag(pet) {
-    pet.addEventListener('pointerdown', (e) => {
-      if (e.button !== 0) return;
-      const r = dock.getBoundingClientRect();
-      dragState = { x: e.clientX, y: e.clientY, left: r.left, top: r.top, w: r.width, h: r.height, moved: false };
-      pet.setPointerCapture(e.pointerId);
-    });
-  }
-
   function resizeOrigin() {
     const r = dock.getBoundingClientRect();
     return { left: r.left, top: r.top, w: r.width, h: r.height };
@@ -349,12 +356,11 @@
   // 只允许左右调宽；高度由所在布局自动决定。
   function resizeDock(edge, dx, r) {
     if (edge !== 'w' && edge !== 'e') return;
-    const available = edge === 'w' ? r.left + r.w : window.innerWidth - r.left;
+    const available = embeddedHost && !embeddedHost.classList.contains('xe-cat-stacked')
+      ? Math.max(1, embeddedHost.clientWidth - CONF.gap - 320) : maxPanelWidth();
     const w = clamp(r.w + (edge === 'w' ? -dx : dx),
       Math.min(CONF.minWidth, available, maxPanelWidth()), Math.min(maxPanelWidth(), available));
-    const next = { left: edge === 'w' ? r.left + r.w - w : r.left, top: r.top, w, h: r.h };
     customDockW = w;
-    if (fullSession) fullRect = next;
     layout();
   }
 
@@ -372,46 +378,42 @@
       e.stopPropagation();
     });
     resizer.addEventListener('dblclick', () => {
-      customDockW = 0; fullRect = null; layout();
+      customDockW = 0; layout();
     });
   }
 
-  function bindDragMove() {
+  function bindResizeMove() {
     document.addEventListener('pointermove', (e) => {
-      if (!dock) return;
-      if (resizeState) {
-        resizeDock(resizeState.edge, e.clientX - resizeState.x, resizeState);
-        return;
-      }
-      if (!dragState || Math.hypot(e.clientX - dragState.x, e.clientY - dragState.y) < 4 && !dragState.moved) return;
-      dragState.moved = true;
-      const r = rectInViewport({ ...dragState, left: dragState.left + e.clientX - dragState.x, top: dragState.top + e.clientY - dragState.y });
-      petPos = { left: r.left, top: r.top }; petClickUntil = Date.now() + 400;
-      setDockRect(r);
-      if (fullSession && collapsed()) updateFullscreenEntry(pick(SEL.player) || pick(SEL.videoRoot));
+      if (dock && resizeState) resizeDock(resizeState.edge, e.clientX - resizeState.x, resizeState);
     });
-    const endDrag = () => { resizeState = null; dragState = null; };
-    document.addEventListener('pointerup', endDrag);
-    document.addEventListener('pointercancel', endDrag);
-    window.addEventListener('blur', endDrag);
+    const endResize = () => { resizeState = null; };
+    document.addEventListener('pointerup', endResize);
+    document.addEventListener('pointercancel', endResize);
+    window.addEventListener('blur', endResize);
   }
 
   function toggleDock() {
+    const keepFocus = dock?.contains(document.activeElement) || document.activeElement === catalogEntry;
+    if (!collapsed()) collapsedScroll = [dockBody, ...dockBody.querySelectorAll('*')]
+      .filter(el => el.scrollTop || el.scrollLeft).map(el => [el, el.scrollTop, el.scrollLeft]);
     dockCollapsed = !dockCollapsed;
-    dragState = null;
     resizeState = null;
     applyCollapsed();
     layout();
+    if (!collapsed()) {
+      collapsedScroll.forEach(([el, top, left]) => { if (dockBody.contains(el) || el === dockBody) { el.scrollTop = top; el.scrollLeft = left; } });
+      collapsedScroll = [];
+    }
+    if (keepFocus) (collapsed() ? catalogEntry : dock.querySelector('#xe-cat-toggle'))?.focus({ preventScroll: true });
     sync(true);
   }
 
   function applyCollapsed() {
     if (!dock) return;
     dock.classList.toggle('xe-collapsed', dockCollapsed);
-    dock.querySelector('#xe-cat-toggle').textContent = dockCollapsed ? '目录' : '收起';
   }
 
-  // 6. 把目录节点搬进右侧面板（同一时刻只保留一个目录节点，并记录原位以便搬回）
+  // 6. 把目录节点搬进面板（同一时刻只保留一个目录节点，并记录原位以便搬回）
   function relocateCatalog() {
     const cat = catNode();
     if (!cat || !dockBody) return false;
@@ -419,7 +421,7 @@
       if (!catOriginParent || !document.contains(catOriginParent)) { catOriginParent = cat.parentElement; catOriginNext = cat.nextSibling; }
       [...dockBody.children].forEach((c) => c !== cat && c.remove());   // 清理切换视频后残留的旧目录
       dockBody.appendChild(cat);
-      log('目录已搬到视频右侧');
+      log('目录已搬入面板');
     }
     return true;
   }
@@ -437,7 +439,7 @@
       log('已把目录放回原位置');
     }
     if (dock) dock.remove();
-    dock = null; dockBody = null; dockFixed = false;
+    dock = null; dockBody = null; dockFixed = false; collapsedScroll = [];
     catOriginParent = null; catOriginNext = null;
     log('已退出接管（当前不是课时学习界面，页面保持原样）');
   }
@@ -632,40 +634,39 @@
     });
   }
 
-  // 目录入口始终留在全屏视频右上角，与播放器控制栏的自动隐藏无关。
-  function updateFullscreenEntry(player) {
+  // 收起后在播放器同侧保留标签；普通页随文档滚动，全屏贴在同侧屏幕边缘。
+  function updateCatalogEntry(player) {
+    if (!collapsed()) { removeCatalogEntry(); return; }
     const host = document.fullscreenElement || document.body;
-    if (!fullscreenEntry) {
-      fullscreenEntry = document.createElement('button');
-      fullscreenEntry.id = 'xe-cat-full-entry'; fullscreenEntry.type = 'button';
-      fullscreenEntry.innerHTML = '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M7 5h10M7 10h10M7 15h10"/><path d="M3 5h1M3 10h1M3 15h1"/></svg><span></span>';
-      fullscreenEntry.setAttribute('aria-controls', 'xe-cat-dock');
-      fullscreenEntry.addEventListener('click', () => {
-        toggleDock();
-      });
-      ['keydown', 'keyup', 'keypress'].forEach(type => fullscreenEntry.addEventListener(type, event => {
+    if (!catalogEntry) {
+      catalogEntry = document.createElement('button');
+      catalogEntry.id = 'xe-cat-entry'; catalogEntry.type = 'button';
+      catalogEntry.innerHTML = '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path class="xe-cat-entry-arrow"/></svg><span>课程目录</span>';
+      catalogEntry.setAttribute('aria-controls', 'xe-cat-dock');
+      catalogEntry.setAttribute('aria-expanded', 'false');
+      catalogEntry.setAttribute('aria-label', '展开课程目录');
+      catalogEntry.title = '展开课程目录';
+      catalogEntry.addEventListener('click', toggleDock);
+      ['keydown', 'keyup', 'keypress'].forEach(type => catalogEntry.addEventListener(type, event => {
         if (event.key !== 'Escape') event.stopPropagation();
       }));
     }
-    if (fullscreenEntry.parentElement !== host) host.appendChild(fullscreenEntry);
-    const shown = !collapsed();
-    const label = shown ? '收起课程目录' : '课程目录';
-    const caption = fullscreenEntry.querySelector('span');
-    if (caption.textContent !== label) caption.textContent = label;
-    fullscreenEntry.setAttribute('aria-expanded', String(shown));
-    fullscreenEntry.title = shown ? '收起目录，视频恢复全宽' : '展开目录，可搜索和切换课时';
-    let right = shown && player ? Math.max(16, window.innerWidth - player.getBoundingClientRect().right + 16) : 16;
-    if (collapsed()) {
-      const pet = dock.getBoundingClientRect(), width = fullscreenEntry.offsetWidth;
-      if (pet.top < 16 + fullscreenEntry.offsetHeight && pet.bottom > 16
-        && pet.left < window.innerWidth - right && pet.right > window.innerWidth - right - width) {
-        right = Math.min(window.innerWidth - width - 16, window.innerWidth - pet.left + 12);
-      }
-    }
-    fullscreenEntry.style.right = right + 'px';
+    if (catalogEntry.parentElement !== host) host.appendChild(catalogEntry);
+    catalogEntry.dataset.side = catalogSide;
+    const arrow = catalogEntry.querySelector('.xe-cat-entry-arrow');
+    const path = catalogSide === 'left' ? 'M7 5l5 5-5 5' : 'M13 5l-5 5 5 5';
+    if (arrow.getAttribute('d') !== path) arrow.setAttribute('d', path);
+    const anchor = player || (catOriginParent?.isConnected ? catOriginParent : pick('.main_content'));
+    const r = fullSession ? { left: 0, right: window.innerWidth, top: 0 }
+      : anchor?.getBoundingClientRect() || { left: 16, right: window.innerWidth - 16, top: CONF.viewportTop };
+    const width = catalogEntry.offsetWidth;
+    const left = catalogSide === 'left' ? r.left : r.right - width;
+    catalogEntry.style.position = 'fixed';
+    catalogEntry.style.left = Math.round(left) + 'px';
+    catalogEntry.style.top = Math.round(r.top + 12) + 'px';
   }
 
-  function removeFullscreenEntry() { fullscreenEntry?.remove(); fullscreenEntry = null; }
+  function removeCatalogEntry() { catalogEntry?.remove(); catalogEntry = null; }
 
   const FULL_PLAYER_PROPS = ['position', 'left', 'top', 'width', 'height', 'max-width', 'max-height', 'transform', 'overflow'];
   const rememberStyle = (el, props) => props.map((p) => [p, el.style.getPropertyValue(p), el.style.getPropertyPriority(p)]);
@@ -674,8 +675,8 @@
     old.forEach(([p, val, pri]) => { if (val) el.style.setProperty(p, val, pri); else el.style.removeProperty(p); });
   };
 
-  // 8.2 左侧是完整播放器（含进度条和控制按钮），右侧目录独立占位。
-  function fitPlayerFullscreen(player, availW) {
+  // 8.2 完整播放器（含进度条和控制按钮）与目录分别占位。
+  function fitPlayerFullscreen(player, availW, left) {
     if (fullPlayer !== player) {
       restoreStyle(fullPlayer, fullPlayerOld);
       if (fullPlayer) fullPlayer.classList.remove('xe-cat-full-player');
@@ -683,7 +684,7 @@
       fullPlayerOld = rememberStyle(player, FULL_PLAYER_PROPS);
     }
     player.classList.add('xe-cat-full-player');
-    const values = { position: 'fixed', left: '0px', top: '0px', width: availW + 'px', height: window.innerHeight + 'px',
+    const values = { position: 'fixed', left: left + 'px', top: '0px', width: availW + 'px', height: window.innerHeight + 'px',
       'max-width': 'none', 'max-height': 'none', transform: 'none', overflow: 'hidden' };
     Object.entries(values).forEach(([p, value]) => player.style.setProperty(p, value, 'important'));
     const host = document.fullscreenElement || document.body;
@@ -699,7 +700,7 @@
       fsVideoEl = v;
       fsVideoOld = rememberStyle(v, FS_PROPS);
     }
-    // 保留原始比例，画面居中在左侧播放器中，controls 也局限在同一区域。
+    // 保留原始比例，画面居中在播放器中，controls 也局限在同一区域。
     const values = { position: 'absolute', left: '0px', top: '0px', width: '100%', height: '100%',
       transform: 'none', 'object-fit': 'contain', 'max-width': '100%', 'max-height': '100%' };
     Object.entries(values).forEach(([p, value]) => v.style.setProperty(p, value, 'important'));
@@ -711,7 +712,7 @@
   }
 
   function leaveFullLayout() {
-    removeFullscreenEntry();
+    removeCatalogEntry();
     unfitVideoFullscreen();
     restoreStyle(fullPlayer, fullPlayerOld);
     if (fullPlayer) fullPlayer.classList.remove('xe-cat-full-player');
@@ -721,7 +722,6 @@
     if (fullBackdrop) fullBackdrop.remove();
     fullBackdrop = null;
     fullSession = ''; fullHref = ''; fullVideo = null;
-    fullRect = null;
     if (dock) {
       dock.classList.remove('xe-full-dock');
       if (dock.parentElement !== document.body) document.body.appendChild(dock);
@@ -731,16 +731,17 @@
 
   // 9. 悬浮状态的无播放器页面定位（默认展开状态仍使用文档流）。
   function dockToViewport() {
-    if (collapsed()) { layoutPet(); return; }
-    setDockRect(rectInViewport({ left: window.innerWidth - dockW() - 16, top: CONF.viewportTop, w: dockW(), h: dockH() }));
+    if (collapsed()) { hideCollapsedDock(); updateCatalogEntry(pick(SEL.player) || pick(SEL.videoRoot)); return; }
+    setDockRect(rectInViewport({ left: catalogSide === 'left' ? 16 : window.innerWidth - dockW() - 16,
+      top: CONF.viewportTop, w: dockW(), h: dockH() }));
   }
 
-  function layoutPet() {
+  function hideCollapsedDock() {
     leaveEmbedded();
-    const r = rectInViewport({ left: petPos?.left ?? window.innerWidth - CONF.foldWidth - 16,
-      top: petPos?.top ?? window.innerHeight - CONF.foldHeight - (fullSession ? 64 : 24), w: CONF.foldWidth, h: CONF.foldHeight });
-    if (petPos) petPos = { left: r.left, top: r.top };
-    setDockRect(r);
+    const host = document.fullscreenElement || document.body;
+    if (dock.parentElement !== host) host.appendChild(dock);
+    dock.style.display = 'none';
+    dockFixed = true;
   }
 
   // 9.1 找不到目录时在面板里给出提示（面板本身保持可见，便于确认脚本已注入并反馈日志）
@@ -756,7 +757,7 @@
       embeddedFallback.remove(); embeddedFallback = null;
     }
     if (!embeddedHost) return;
-    embeddedHost.classList.remove('xe-cat-embedded-player', 'xe-cat-stacked');
+    embeddedHost.classList.remove('xe-cat-embedded-player', 'xe-cat-stacked', 'xe-cat-left');
     Object.entries(embeddedOld).forEach(([name, old]) => {
       if (old.value) embeddedHost.style.setProperty(name, old.value, old.priority);
       else embeddedHost.style.removeProperty(name);
@@ -775,6 +776,7 @@
       player.classList.add('xe-cat-embedded-player');
     }
     const available = player.clientWidth;
+    player.classList.toggle('xe-cat-left', catalogSide === 'left');
     player.classList.toggle('xe-cat-stacked', available < CONF.minWidth + CONF.gap + 320);
     const width = Math.min(customDockW || CONF.dockWidth, CONF.maxWidth, Math.max(CONF.minWidth, available - CONF.gap - 320));
     player.style.setProperty('--xe-catalog-width', width + 'px');
@@ -784,7 +786,7 @@
     player.style.setProperty('--xe-catalog-rows', Math.max(1, rows));
     player.style.setProperty('--xe-catalog-stack-height', Math.min(Math.max(320, embeddedVideoHeight), CONF.maxHeight) + 'px');
     if (dock.parentElement !== player) player.appendChild(dock);
-    // 默认由左侧完整播放器区域撑高，包含视频下方标题栏；目录自身不反过来撑高播放器。
+    // 默认由完整播放器区域撑高，包含视频下方标题栏；目录自身不反过来撑高播放器。
     dock.style.cssText = `display:flex;position:relative;width:${width}px;max-height:${CONF.maxHeight}px;height:auto;align-self:stretch;`;
     dockFixed = true;
     dock.querySelectorAll('.xe-cat-resizer').forEach(el => {
@@ -801,6 +803,7 @@
       origin.insertBefore(embeddedFallback, catOriginNext?.parentElement === origin ? catOriginNext : null);
     }
     embeddedFallback.style.width = `min(100%,${Math.min(customDockW || CONF.dockWidth, CONF.maxWidth)}px)`;
+    embeddedFallback.style.margin = catalogSide === 'left' ? '16px auto 16px 0' : '16px 0 16px auto';
     if (dock.parentElement !== embeddedFallback) embeddedFallback.appendChild(dock);
     dock.style.cssText = `position:relative;display:flex;height:${Math.min(560, CONF.maxHeight)}px;`;
     dockFixed = true;
@@ -809,18 +812,19 @@
   function layout() {
     if (!dock) return;
     const player = pick(SEL.player) || pick(SEL.videoRoot);
-    // 切集短暂没有播放器时，保留全屏右栏，等待新播放器挂载。
+    // 切集短暂没有播放器时，保留全屏侧栏，等待新播放器挂载。
     if (!player) {
       if (fullSession && (document.fullscreenElement || isEpisodeTransition())) return;
       if (fullSession || fullPlayer) leaveFullLayout();
-      if (collapsed()) layoutPet(); else embedWithoutPlayer();
+      if (collapsed()) hideCollapsedDock(); else embedWithoutPlayer();
+      updateCatalogEntry(null);
       return;
     }
     const videoRoot = player.querySelector(SEL.videoRoot) || player;
 
     if (isFullMode(player)) {
       leaveEmbedded();
-      if (document.fullscreenElement?.tagName === 'VIDEO') { dock.style.display = 'none'; return; }
+      if (document.fullscreenElement?.tagName === 'VIDEO') { dock.style.display = 'none'; removeCatalogEntry(); return; }
       fullSession = document.fullscreenElement ? 'native' : 'web';
       if (fullSession === 'web') {
         const root = player.querySelector('.xgplayer') || videoRoot;
@@ -839,21 +843,21 @@
       restoreVideoWidth(videoRoot);
       const width = panelW();
       // 全屏始终贴顶铺满，左右调宽不会改变高度。
-      const target = fullRect || { left: window.innerWidth - width, top: 0, w: width, h: window.innerHeight };
-      const r = rectInViewport({ ...target, top: 0, h: window.innerHeight }, false);
-      if (fullRect) fullRect = r;
-      fitPlayerFullscreen(player, collapsed() ? window.innerWidth : r.left);
+      const r = rectInViewport({ left: catalogSide === 'left' ? 0 : window.innerWidth - width,
+        top: 0, w: width, h: window.innerHeight });
+      fitPlayerFullscreen(player, collapsed() ? window.innerWidth : window.innerWidth - r.w,
+        !collapsed() && catalogSide === 'left' ? r.w : 0);
       fitVideoFullscreen();
-      if (collapsed()) layoutPet(); else setDockRect(r);
-      updateFullscreenEntry(player);
+      if (collapsed()) hideCollapsedDock(); else setDockRect(r);
+      updateCatalogEntry(player);
       liftSortPopover();
       dockFixed = true;
       return;
     }
     if (fullSession || fullPlayer) leaveFullLayout();
-    removeFullscreenEntry();
-    if (collapsed()) { restoreVideoWidth(videoRoot); layoutPet(); return; }
-    embedDock(player, videoRoot);
+    if (collapsed()) { restoreVideoWidth(videoRoot); hideCollapsedDock(); }
+    else embedDock(player, videoRoot);
+    updateCatalogEntry(player);
   }
 
   // 10. 重新把面板挂到 DOM 里（SPA 重渲染后可能被移除）
@@ -883,7 +887,7 @@
     return false;
   }
 
-  // 12. 防抖同步：目录被 Vue 重渲染回原位时重新搬运；始终找不到目录时露出右上角面板并提示
+  // 12. 防抖同步：目录被 Vue 重渲染回原位时重新搬运；始终找不到目录时露出面板并提示
   function sync(force) {
     clearTimeout(syncTimer);
     syncTimer = setTimeout(() => {
@@ -980,7 +984,7 @@
     }, 1200);
   }
 
-  // 13.1 全屏切换：面板并进全屏容器内，视频压缩到左侧、面板占右侧，避免叠在画面上
+  // 13.1 全屏切换：面板并进全屏容器内，视频与面板分列两侧，避免叠在画面上
   function handleFullscreen() {
     if (!document.fullscreenElement) {
       nativeFullOwned = false;
@@ -1007,10 +1011,10 @@
       log('已进入课时学习界面，开始接管目录（页面=' + pageType() + '）');
     }
     if (!catNode() && !openCatalogTab() && retry < 20) { setTimeout(() => boot(retry + 1), 600); return; }
-    if (!catNode()) {                                        // 始终找不到目录：贴到右侧并提示，继续靠 sync 自愈
+    if (!catNode()) {                                        // 始终找不到目录：按所选侧定位并提示，继续靠 sync 自愈
       dockToViewport();
       showHint('未找到课程目录节点，请把 F12 控制台 [目录右移] 日志反馈' + diag());
-      log('未找到课程目录节点，已贴到右侧兜底' + diag());
+      log('未找到课程目录节点，已按所选侧定位兜底' + diag());
     } else {
       remount();
       log('初始化完成（页面=' + pageType() + diag() + '）');
@@ -1022,7 +1026,7 @@
   function start() {
     if (started) return;
     started = true;
-    bindDragMove();
+    bindResizeMove();
     installFullscreenBridge();
     // 1) DOM 重建或播放器全屏类名变化时同步；忽略脚本自身的样式写入。
     new MutationObserver((records) => {
